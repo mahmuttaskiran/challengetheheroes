@@ -1,4 +1,4 @@
-package com.mamudo.challengetheheroes.ui
+package com.mamudo.challengetheheroes.ui.composables
 
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.*
@@ -24,6 +24,7 @@ import com.mamudo.challengetheheroes.utils.MarvelUrlComparator
 import dev.chrisbanes.accompanist.picasso.PicassoImage
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import com.mamudo.challengetheheroes.R
+import com.mamudo.challengetheheroes.ui.models.CharacterDetailsViewModel
 
 @ExperimentalCoroutinesApi
 @Composable
@@ -85,7 +86,7 @@ private fun Header(c: Character, onBackPressed: () -> Unit) {
             elevation = 0.dp,
             contentColor = Color.White,
             navigationIcon = {
-                IconButton(onClick = { onBackPressed }) {
+                IconButton(onClick = { onBackPressed() }) {
                     Icon(Icons.Filled.ArrowBack)
                 }
             }
