@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.platform.setContent
-import com.mamudo.challengetheheroes.ui.CharactersViewModel
-import com.mamudo.challengetheheroes.ui.CharactersViewModelFactory
-import com.mamudo.challengetheheroes.ui.LatestNewsScreen
+import com.mamudo.challengetheheroes.ui.models.CharactersViewModel
+import com.mamudo.challengetheheroes.ui.models.CharactersViewModelFactory
+import com.mamudo.challengetheheroes.ui.composables.LatestNewsScreen
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 class MainActivity : AppCompatActivity() {

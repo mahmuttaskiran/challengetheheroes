@@ -1,4 +1,4 @@
-package com.mamudo.challengetheheroes.ui
+package com.mamudo.challengetheheroes.ui.models
 
 import android.content.Context
 import android.content.Intent
@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.mamudo.challengetheheroes.MainApplication
 import com.mamudo.challengetheheroes.api.MarvelApi
 import com.mamudo.challengetheheroes.api.data.Character
+import com.mamudo.challengetheheroes.ui.CharacterDetailsActivity
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.flow.MutableStateFlow

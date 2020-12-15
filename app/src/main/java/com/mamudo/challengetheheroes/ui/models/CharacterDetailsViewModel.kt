@@ -1,4 +1,4 @@
-package com.mamudo.challengetheheroes.ui
+package com.mamudo.challengetheheroes.ui.models
 
 import androidx.lifecycle.ViewModel
 import com.mamudo.challengetheheroes.api.data.Character
