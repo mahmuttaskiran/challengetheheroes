@@ -18,6 +18,5 @@ class CharacterDetailsActivity : AppCompatActivity() {
         setContent {
             CharacterDetailsScreen(viewModel = viewModel)
         }
-        println("description: ${viewModel.state.value.description}")
     }
 }
