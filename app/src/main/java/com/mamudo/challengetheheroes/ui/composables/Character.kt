@@ -3,6 +3,7 @@ package com.mamudo.challengetheheroes.ui.composables
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumnForIndexed
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Face
@@ -77,6 +78,7 @@ fun LatestNewsFeed(viewModel: CharactersViewModel) {
 @Composable
 fun CharacterCard(item: Character, onClick: () -> Unit) {
     Card(
+        shape = RoundedCornerShape(15.dp),
         backgroundColor = Color.DarkGray,
         modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
             .clickable(onClick = onClick)
