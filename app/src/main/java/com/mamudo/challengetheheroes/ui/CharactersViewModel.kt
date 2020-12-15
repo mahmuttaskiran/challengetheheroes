@@ -1,6 +1,7 @@
 package com.mamudo.challengetheheroes.ui
 
 import android.content.Context
+import android.content.Intent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.mamudo.challengetheheroes.MainApplication
@@ -14,6 +15,11 @@ import kotlinx.coroutines.flow.StateFlow
 const val LIMIT_PER_REQ = 30
 
 class CharactersViewModel constructor(var context: Context) : ViewModel() {
+
+    companion object {
+        var character: Character? = null
+    }
+
     private val _state = MutableStateFlow(CharactersState(arrayListOf()))
     val state: StateFlow<CharactersState> get() = _state
     var api: MarvelApi = (context.applicationContext as MainApplication).applicationGraph.api()
@@ -34,7 +40,8 @@ class CharactersViewModel constructor(var context: Context) : ViewModel() {
     }
 
     fun onCharacterClick(item: Character) {
-
+        character = item
+        context.startActivity(Intent(context, CharacterDetailsActivity::class.java))
     }
 }
 
