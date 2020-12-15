@@ -1,9 +1,11 @@
-package com.mamudo.challengetheheroes.ui
+package com.mamudo.challengetheheroes.ui.composables
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumnForIndexed
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.onActive
@@ -13,12 +15,15 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.mamudo.challengetheheroes.api.data.Character
 import dev.chrisbanes.accompanist.picasso.PicassoImage
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import com.mamudo.challengetheheroes.R;
+import com.mamudo.challengetheheroes.ui.models.CharactersViewModel
 
 @ExperimentalCoroutinesApi
 @Composable
@@ -29,7 +34,7 @@ fun LatestNewsScreen(viewModel: CharactersViewModel) {
             topBar = {
                 TopAppBar(title = {
                     CenteredColumn {
-                        Text(text = "Marvel Characters")
+                        Text(text = stringResource(id = R.string.marvelCharactersTitle))
                     }
                 }, backgroundColor = Color.Black, elevation = 10.dp, contentColor = Color.White)
             },
@@ -52,7 +57,7 @@ fun LatestNewsFeed(viewModel: CharactersViewModel) {
         }
     } else if (state.value.exception != null) {
         CenteredColumn {
-            Text("Something went wrong.")
+            Text(stringResource(id = R.string.somethingWentWrongErrorMessage))
         }
     } else {
         LazyColumnForIndexed(items = state.value.characters) { i, item ->
@@ -89,7 +94,7 @@ fun CharacterCard(item: Character, onClick: () -> Unit) {
                     }
                 },
                 error = {
-                    Text(text = "Image cannot loaded.")
+                    Icon(Icons.Filled.Face)
                 },
                 modifier = imageModifier
             )
@@ -97,12 +102,10 @@ fun CharacterCard(item: Character, onClick: () -> Unit) {
                 item.name,
                 style = TextStyle(
                     color = Color.White,
-                    fontSize = TextUnit(60),
+                    fontSize = 20.sp,
                     shadow = Shadow(blurRadius = 0.5f, offset = Offset(1f, 1f))
                 ),
-                modifier = Modifier.align(
-                    Alignment.Center
-                ),
+                modifier = Modifier.align(Alignment.TopCenter).padding(top = 15.dp),
             )
 
         }
