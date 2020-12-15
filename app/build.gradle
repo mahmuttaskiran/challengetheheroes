@@ -3,6 +3,9 @@ plugins {
     id 'kotlin-android'
 }
 
+def marvelPublicKey = readLocalProperty("marvelPublicKey")
+def marvelPrivateKey = readLocalProperty("marvelPrivateKey")
+
 android {
     compileSdkVersion 30
 
@@ -17,7 +20,13 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "String", "MARVEL_PUBLIC_KEY", marvelPublicKey
+            buildConfigField "String", "MARVEL_PRIVATE_KEY", marvelPrivateKey
+        }
         release {
+            buildConfigField "String", "MARVEL_PUBLIC_KEY", marvelPublicKey
+            buildConfigField "String", "MARVEL_PRIVATE_KEY", marvelPrivateKey
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -37,6 +46,12 @@ android {
         kotlinCompilerExtensionVersion compose_version
         kotlinCompilerVersion '1.4.20'
     }
+}
+
+def readLocalProperty(String propertyName) {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file("keys.properties").newDataInputStream())
+    return properties.get(propertyName)
 }
 
 dependencies {
