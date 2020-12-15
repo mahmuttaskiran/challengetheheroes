@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">ChallengeTheHeroes</string>
     <string name="title_activity_character_details">Hero</string>
+    <string name="imageCannotLoaded">Image cannot loaded</string>
+    <string name="description">Description</string>
+    <string name="comics">Comics</string>
 </resources>
