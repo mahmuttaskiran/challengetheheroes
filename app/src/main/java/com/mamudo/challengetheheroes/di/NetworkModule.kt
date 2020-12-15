@@ -7,8 +7,8 @@ import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.Response
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
@@ -21,28 +21,29 @@ class NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(MARVEL_API_BASE_URL)
-            .addConverterFactory(MoshiConverterFactory.create())
             .client(okHttpClient)
+            .addConverterFactory(MoshiConverterFactory.create())
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()
     }
 
     @Singleton
     @Provides
-    fun provideInterceptor() : Interceptor {
+    fun provideInterceptor(): Interceptor {
         return Interceptor { chain ->
-            val defaultReq =  chain.request()
-            val md5HashedSignature = "1${BuildConfig.MARVEL_PRIVATE_KEY}${BuildConfig.MARVEL_PUBLIC_KEY}".md5()
+            val defaultReq = chain.request()
+            val md5HashedSignature =
+                "1${BuildConfig.MARVEL_PRIVATE_KEY}${BuildConfig.MARVEL_PUBLIC_KEY}".md5()
             val defaultUrl = defaultReq.url()
             val httpUrl = defaultUrl.newBuilder()
-                    .addQueryParameter("ts", "1")
-                    .addQueryParameter("apikey", BuildConfig.MARVEL_PUBLIC_KEY)
-                    .addQueryParameter("hash", md5HashedSignature)
-                    .build()
+                .addQueryParameter("ts", "1")
+                .addQueryParameter("apikey", BuildConfig.MARVEL_PUBLIC_KEY)
+                .addQueryParameter("hash", md5HashedSignature)
+                .build()
             val reqBuilder = defaultReq.newBuilder().url(httpUrl)
             chain.proceed(reqBuilder.build())
         }
     }
-
 
     @Singleton
     @Provides
@@ -55,7 +56,7 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideMarvelApi(retrofit: Retrofit) : MarvelApi {
+    fun provideMarvelApi(retrofit: Retrofit): MarvelApi {
         return retrofit.create(MarvelApi::class.java)
     }
 }

@@ -1,14 +1,19 @@
 package com.mamudo.challengetheheroes.api
 
-import retrofit2.Call
+import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import javax.inject.Singleton
 
+@Singleton
 interface MarvelApi {
     @GET("/v1/public/characters")
-    fun getCharacters(@Query("offset") offset: Int, @Query("limit") limit: Int): Call<MarvelResponse>
+    fun getCharacters(
+        @Query("offset") offset: Int,
+        @Query("limit") limit: Int
+    ): Observable<MarvelResponse>
 
     @GET("/v1/public/characters/{id}")
-    fun getCharacter(@Path("id") id: Int): Call<MarvelResponse>
+    fun getCharacter(@Path("id") id: Int): Observable<MarvelResponse>
 }

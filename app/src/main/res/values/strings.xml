@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ChallengeTheHeroes</string>
+    <string name="title_activity_character_details">Hero</string>
 </resources>

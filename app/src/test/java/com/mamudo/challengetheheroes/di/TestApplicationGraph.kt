@@ -6,6 +6,6 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [NetworkModule::class])
-interface TestApplicationGraph: ApplicationGraph {
+interface TestApplicationGraph : ApplicationGraph {
     fun inject(test: MarvelApiTest)
 }
