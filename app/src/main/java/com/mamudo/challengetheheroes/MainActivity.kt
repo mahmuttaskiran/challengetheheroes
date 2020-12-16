@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.platform.setContent
 import com.mamudo.challengetheheroes.ui.models.CharactersViewModel
 import com.mamudo.challengetheheroes.ui.models.CharactersViewModelFactory
-import com.mamudo.challengetheheroes.ui.composables.LatestNewsScreen
+import com.mamudo.challengetheheroes.ui.composables.CharactersListScreen
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            LatestNewsScreen(viewModel)
+            CharactersListScreen(viewModel)
         }
     }
 }

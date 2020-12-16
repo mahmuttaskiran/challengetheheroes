@@ -28,7 +28,7 @@ import com.mamudo.challengetheheroes.ui.models.CharactersViewModel
 
 @ExperimentalCoroutinesApi
 @Composable
-fun LatestNewsScreen(viewModel: CharactersViewModel) {
+fun CharactersListScreen(viewModel: CharactersViewModel) {
     MaterialTheme {
         Scaffold(
             backgroundColor = Color.Black,
@@ -40,7 +40,7 @@ fun LatestNewsScreen(viewModel: CharactersViewModel) {
                 }, backgroundColor = Color.Black, elevation = 10.dp, contentColor = Color.White)
             },
             bodyContent = {
-                LatestNewsFeed(viewModel = viewModel)
+                CharactersList(viewModel = viewModel)
             }
         )
     }
@@ -49,7 +49,7 @@ fun LatestNewsScreen(viewModel: CharactersViewModel) {
 
 @ExperimentalCoroutinesApi
 @Composable
-fun LatestNewsFeed(viewModel: CharactersViewModel) {
+fun CharactersList(viewModel: CharactersViewModel) {
     val state = viewModel.state.collectAsState()
     val lastIndex = state.value.characters.lastIndex
     if (state.value.characters.isEmpty() && state.value.exception == null) {
