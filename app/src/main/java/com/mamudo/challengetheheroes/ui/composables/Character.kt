@@ -64,7 +64,7 @@ fun CharactersList(viewModel: CharactersViewModel) {
         LazyColumnForIndexed(items = state.value.characters) { i, item ->
             if (lastIndex == i) {
                 onActive {
-                    viewModel.moreCharacters()
+                    viewModel.loadMoreCharacters()
                 }
             }
             CharacterCard(item) {

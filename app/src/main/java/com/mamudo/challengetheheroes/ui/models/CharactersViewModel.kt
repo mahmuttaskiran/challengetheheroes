@@ -26,10 +26,10 @@ class CharactersViewModel constructor(var context: Context) : ViewModel() {
     var api: MarvelApi = (context.applicationContext as MainApplication).applicationGraph.api()
 
     init {
-        moreCharacters()
+        loadMoreCharacters()
     }
 
-    fun moreCharacters() {
+    fun loadMoreCharacters() {
         api.getCharacters(state.value.characters.size, limit = LIMIT_PER_REQ)
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
