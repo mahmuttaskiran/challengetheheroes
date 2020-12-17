@@ -13,7 +13,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
-const val LIMIT_PER_REQ = 30
+private const val LIMIT_PER_REQ = 30
 
 class CharactersViewModel constructor(var context: Context) : ViewModel() {
 
