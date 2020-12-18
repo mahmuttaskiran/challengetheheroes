@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'kotlin-parcelize'
 }
 
 def marvelPublicKey = readLocalProperty("marvelPublicKey")
@@ -53,8 +54,6 @@ def readLocalProperty(String propertyName) {
     return properties.get(propertyName)
 }
 
-def dagger_version = "2.30.1"
-
 dependencies {
     // retrofit and moshi and its code generators
     implementation 'com.squareup.moshi:moshi:1.10.0'
@@ -88,7 +87,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
-    implementation "dev.chrisbanes.accompanist:accompanist-picasso:0.4.0"
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
