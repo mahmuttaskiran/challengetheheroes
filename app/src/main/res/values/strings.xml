@@ -6,4 +6,6 @@
     <string name="marvelCharactersTitle">Marvel Characters</string>
     <string name="somethingWentWrongErrorMessage">Something went wrong.</string>
     <string name="comics">Comics</string>
+    <string name="activity_main_title">Heroes</string>
+    <string name="details">Details</string>
 </resources>
