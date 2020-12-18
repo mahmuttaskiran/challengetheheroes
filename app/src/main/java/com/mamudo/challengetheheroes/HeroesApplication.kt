@@ -5,7 +5,7 @@ import com.mamudo.challengetheheroes.di.ApplicationGraph
 import com.mamudo.challengetheheroes.di.DaggerApplicationGraph
 
 
-class MainApplication : Application() {
+class HeroesApplication : Application() {
     lateinit var applicationGraph: ApplicationGraph
     override fun onCreate() {
         super.onCreate()
