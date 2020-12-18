@@ -16,4 +16,11 @@ interface MarvelApi {
 
     @GET("/v1/public/characters/{id}")
     fun getCharacter(@Path("id") id: Int): Observable<MarvelResponse>
+
+    @GET("/v1/public/characters/{id}/comics")
+    fun getCharacterComics(
+        @Path("id") id: Int,
+        @Query("orderBy") orderBy: String = "-onsaleDate",
+        @Query("limit") limit: Int = 10
+    ): Observable<MarvelResponse>
 }
